@@ -1,6 +1,35 @@
 set nocompatible              " be iMproved, required
 
-so ~/.vim/plugins.vim
+"------------------VUNDLE----------------"
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-vinegar'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'rking/ag.vim'
+Plugin 'skwp/greplace.vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'tpope/vim-surround'
+Plugin 'StanAngeloff/php.vim'
+Plugin 'arnaud-lb/vim-php-namespace'
+Plugin 'ervandew/supertab'
+Plugin 'stephpy/vim-php-cs-fixer'
+Plugin 'tobyS/vmustache'
+Plugin 'tobyS/pdv'
+Plugin 'SirVer/ultisnips'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+"------------------END-------------------"
+
+
 
 
 
@@ -85,6 +114,15 @@ nmap <C-L> <C-W><C-L>
 
 
 
+"------------------IMAP------------------"
+"Ctrl-C is now Esc
+:imap <C-c> <Esc>
+
+
+
+
+
+
 "------------------NMAP------------------"
 
 "Make it easy to edit the Vimrc file.
@@ -112,6 +150,9 @@ nmap <C-e> :CtrlPMRUFiles<CR>
 "Tab switching
 nmap <C-n> :tabn<CR>
 nmap <C-m> :tabp<CR>
+
+"Edit new file in new tab
+nmap <Leader>ee :tabedit 
 
 "Tab close
 nmap <C-x> :tabc<CR>
