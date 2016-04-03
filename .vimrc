@@ -23,6 +23,12 @@ Plugin 'stephpy/vim-php-cs-fixer'
 Plugin 'tobyS/vmustache'
 Plugin 'tobyS/pdv'
 Plugin 'SirVer/ultisnips'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'jwalton512/vim-blade'
+Plugin 'danro/rename.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'maksimr/vim-jsbeautify'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -35,6 +41,7 @@ filetype plugin indent on    " required
 
 set backspace=indent,eol,start
 set background=dark
+let g:ctrlp_max_files=0
 syntax on
 
 "The default <Leader> is / but hell no, , is better"
@@ -116,9 +123,6 @@ nmap <C-L> <C-W><C-L>
 
 "------------------IMAP------------------"
 "Ctrl-C is now Esc
-:imap <C-c> <Esc>
-
-
 
 
 
@@ -151,14 +155,37 @@ nmap <C-e> :CtrlPMRUFiles<CR>
 nmap <C-n> :tabn<CR>
 nmap <C-m> :tabp<CR>
 
+"Tab moving
+nmap <C-F9> :tabm -1<CR>
+nmap <C-F10> :tabm +1<CR>
+
 "Edit new file in new tab
-nmap <Leader>ee :tabedit 
+nmap <Leader>ee :tabedit
 
 "Tab close
 nmap <C-x> :tabc<CR>
 
-"Ctrl-A select all
-nmap <C-a> <esc>ggVG<CR>
+"Tab open 
+nmap <C-o> :tabnew<CR>
+
+"Format js
+map <Leader>js :call JsBeautify()<cr>
+
+"Format html
+map <Leader>html :set ft=html<CR> =G
+
+
+
+
+"------------------RENAME-CURRENT-FILE----"
+nmap <Leader>rc :rename 
+
+
+
+
+
+"------------------LARAVEL-SPECIFIC-------"
+nmap <F3> :Autoformat<CR>
 
 
 
@@ -223,16 +250,16 @@ let g:grep_cmd_opts = '--line-numbers --noheading'
 
 "Custom function vim-php-namespace
 function! IPhpInsertUse()
-	call PhpInsertUse()
-	call feedkeys('a',  'n')
+    call PhpInsertUse()
+    call feedkeys('a',  'n')
 endfunction
 autocmd FileType php inoremap <Leader>n <Esc>:call IPhpInsertUse()<CR>
 autocmd FileType php noremap <Leader>n :call PhpInsertUse()<CR>
 
 
 function! IPhpExpandClass()
-	call PhpExpandClass()
-	call feedkeys('a', 'n')
+    call PhpExpandClass()
+    call feedkeys('a', 'n')
 endfunction
 autocmd FileType php inoremap <Leader>nf <Esc>:call IPhpExpandClass()<CR>
 autocmd FileType php noremap <Leader>nf :call PhpExpandClass()<CR>
@@ -262,6 +289,6 @@ vmap <Leader>su ! awk '{ print length(), $0 \| "sort -n \| cut -d\\  -f2-" }'<cr
 "Automatically source the Vimrc file on save.
 
 augroup autosourcing
-	autocmd!
-	autocmd BufWritePost .vimrc source %
+    autocmd!
+    autocmd BufWritePost .vimrc source %
 augroup END
