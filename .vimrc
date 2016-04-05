@@ -29,6 +29,7 @@ Plugin 'jwalton512/vim-blade'
 Plugin 'danro/rename.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'maksimr/vim-jsbeautify'
+Plugin 'mattn/emmet-vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -154,6 +155,7 @@ nmap <C-e> :CtrlPMRUFiles<CR>
 "Tab switching
 nmap <C-n> :tabn<CR>
 nmap <C-m> :tabp<CR>
+nmap <C-l> :tabl<CR>
 
 "Tab moving
 nmap <C-F9> :tabm -1<CR>
