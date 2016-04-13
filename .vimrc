@@ -39,11 +39,12 @@ filetype plugin indent on    " required
 
 
 
-
+silent !stty -ixon > /dev/null 2>/dev/null
 set backspace=indent,eol,start
 set background=dark
 let g:ctrlp_max_files=0
 syntax on
+set switchbuf=useopen,usetab
 
 "The default <Leader> is / but hell no, , is better"
 let mapleader = ','
@@ -140,8 +141,8 @@ nmap <Leader>tp :tp<CR>
 "Return to old buffer
 nmap <BS> :bp<CR>
 
-"Find tags
-nmap ,t :tag<space>
+"Find tags ctags
+nmap <Leader><Leader>t :tag<space>
 
 "Add simple hightlight removal.
 nmap <Leader><space> :nohlsearch<CR>
@@ -170,6 +171,15 @@ nmap <C-x> :tabc<CR>
 "Tab open 
 nmap <C-o> :tabnew<CR>
 
+"Spit window close
+nmap <C-q> :q<CR>
+
+"Spit window switching
+nmap <C-h> <C-w><C-h>
+nmap <C-k> <C-w><C-k>
+nmap <C-j> <C-w><C-j>
+nmap <C-l> <C-w><C-l>
+
 "Format js
 map <Leader>js :call JsBeautify()<cr>
 
@@ -181,6 +191,41 @@ map <Leader>html :set ft=html<CR> =G
 
 "------------------RENAME-CURRENT-FILE----"
 nmap <Leader>rc :rename 
+
+
+
+
+
+"------------------MARK-------------------"
+nmap mm mM
+nmap mn mN
+nmap mc mC
+nmap mv mV
+nmap ma mA
+nmap ms mS
+nmap md mD
+nmap mf mF
+nmap mj mJ
+nmap mk mK
+nmap ml mL
+nmap mi mI
+nmap mo mO
+nmap mp mP
+
+nmap zm 'Mzz
+nmap zn 'Nzz
+nmap zc 'Czz
+nmap zv 'Vzz
+nmap za 'Azz
+nmap zs 'Szz
+nmap zd 'Dzz
+nmap zf 'Fzz
+nmap zj 'Jzz
+nmap zk 'Kzz
+nmap zl 'Lzz
+nmap zi 'Izz
+nmap zo 'Ozz
+nmap zp 'Pzz
 
 
 
