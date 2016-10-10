@@ -30,6 +30,9 @@ Plugin 'danro/rename.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'mattn/emmet-vim'
+Plugin 'scrooloose/syntastic' 
+Plugin 'wavded/vim-stylus'
+Plugin 'rust-lang/rust.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -38,6 +41,7 @@ filetype plugin indent on    " required
 
 
 
+colorscheme murphy
 
 silent !stty -ixon > /dev/null 2>/dev/null
 set backspace=indent,eol,start
@@ -55,6 +59,9 @@ set nonumber
 "Shell are using?
 set shell=/bin/bash
 
+"Show hidden files, nerdtree
+let NERDTreeShowHidden=1
+
 "Automatic save the file when switching buffer
 set autowriteall
 
@@ -64,10 +71,9 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 
-set tabstop=8
-set expandtab
-set softtabstop=4
-set shiftwidth=4
+set sts=2
+set ts=2
+set sw=2
 
 "Set php-fixer default
 let g:set_php_fixer_level = "psr2"
@@ -98,6 +104,15 @@ set foldcolumn=2
 
 hi Normal ctermfg=none ctermbg=none
 hi FoldColumn ctermbg=none ctermfg=none
+
+
+
+"------------VIM MULTIPLE CURSOR---------"
+" Default mapping
+let g:multi_cursor_use_default_mapping=0
+
+" Map start key separately from next key
+let g:multi_cursor_start_key='<F6>'
 
 
 
@@ -156,7 +171,6 @@ nmap <C-e> :CtrlPMRUFiles<CR>
 "Tab switching
 nmap <C-n> :tabn<CR>
 nmap <C-m> :tabp<CR>
-nmap <C-l> :tabl<CR>
 
 "Tab moving
 nmap <C-F9> :tabm -1<CR>
@@ -237,7 +251,6 @@ nmap <F3> :Autoformat<CR>
 
 
 
-
 "------------------LARAVEL-SPECIFIC-------"
 nmap <Leader>lr :e app/Http/routes.php<CR>
 nmap <Leader>lc :CtrlP<CR>app/Http/Controllers
@@ -253,6 +266,14 @@ nmap <Leader>lv :e resources/views/<CR>
 "\
 let g:ctrlp_custom_ignore = 'node_modules\DS_Store\|git'
 let g:ctrlp_match_window = 'top,order:ttb,min:1,max:30,results:30'
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store,*/vendor,*/node_modules
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 
 
 
