@@ -1,9 +1,12 @@
 #!/bin/sh
 
 # Hello there user, please fill in the configuration and then we could start
+# After fill in config, turn back and read this
+# So if you want to quick n dirty git push, map an alias command to run this script
+# ex: ch fix_some_issue (take first argument as commit message)
 
 #config
-project_path="/home/kocoten1992/Code/tienganhlamienphi/website" #use absolute path
+project_path="/home/kocoten1992/Code/someproject/website" #use absolute path
 git_user="kocoten1992" #when you create ssh-keygen for github
 git_email="ko_co_ten_1992@yahoo.com" #git config user.email
 
@@ -30,6 +33,8 @@ if [ $current_user = "root" ]; then
 
   exec sudo -u $git_user /bin/sh - << _EOF_
 
+  cd $project_path
+
   git add .
   git commit -m "$commit_message $(date +"%m-%d-%Y %T")"
   git push
@@ -37,5 +42,3 @@ if [ $current_user = "root" ]; then
 _EOF_
 
 fi
-
-echo "Done, boss"
