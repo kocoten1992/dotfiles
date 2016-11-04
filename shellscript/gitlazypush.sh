@@ -3,7 +3,7 @@
 # Hello there user, please fill in the configuration and then we could start
 # After fill in config, turn back and read this
 # So if you want to quick n dirty git push, map an alias command to run this script
-# ex: ch fix_some_issue (take first argument as commit message)
+# ex: lg fix_some_issue (take first argument as commit message, lg -> lazygit)
 
 #config
 project_path="/home/kocoten1992/Code/someproject/website" #use absolute path
