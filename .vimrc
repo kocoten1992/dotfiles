@@ -71,9 +71,7 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 
-set sts=2
-set ts=2
-set sw=2
+set expandtab ts=2 sw=2 ai
 
 "Set php-fixer default
 let g:set_php_fixer_level = "psr2"
@@ -200,6 +198,8 @@ map <Leader>js :call JsBeautify()<cr>
 "Format html
 map <Leader>html :set ft=html<CR> =G
 
+nmap <Leader>sp :set paste<CR>
+nmap <Leader>np :set nopaste<CR>
 
 
 
@@ -247,6 +247,9 @@ nmap zp 'Pzz
 
 "------------------LARAVEL-SPECIFIC-------"
 nmap <F3> :Autoformat<CR>
+"let g:autoformat_autoindent = 2
+"let g:autoformat_retab = 2 
+"let g:autoformat_remove_trailing_spaces = 2
 
 
 
@@ -285,6 +288,7 @@ let g:ctrlp_custom_ignore = {
 "------------------NERDTree------------------"
 "\
 let NERDTreeHijackNetrw = 0
+let NERDTreeQuitOnOpen=1
 
 
 
