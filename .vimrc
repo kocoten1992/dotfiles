@@ -86,11 +86,10 @@ nnoremap <Leader>d :call pdv#DocumentWithSnip()<CR>
 
 
 "------------------VISUALS---------------"
-"colorscheme atom-dark-256
 set guifont=Fira_Code:h17
 set guioptions-=e
-set t_CO=256
 set linespace=15
+set term=xterm-256color
 
 set guioptions-=l
 set guioptions-=L
@@ -122,6 +121,40 @@ set incsearch
 
 
 
+
+
+
+
+"----------------TERMINAL----------------"
+nmap <Leader>ts :!
+
+
+
+
+
+
+
+
+
+
+"----------------CTAGS-------------------"
+nmap <Leader>ct :tag<space>
+nmap <Leader>ctn :tn<CR>
+nmap <Leader>ctp :tp<CR>
+nmap <Leader>cts :ts<CR>
+
+nmap <Leader>ctc :!ctags -R --exclude=.git --exclude=node_modules --exclude=vendor --exclude=bower_components --exclude=storage --exclude=.idea --exclude=jspm_packages<space><CR>
+
+
+
+
+
+
+
+
+
+
+
 "------------------SPIT MANAMENT---------"
 set splitbelow
 set splitright
@@ -131,6 +164,8 @@ nmap <C-K> <C-W><C-K>
 nmap <C-H> <C-W><C-H>
 nmap <C-L> <C-W><C-L>
 
+nmap <Leader>vsp :vsp<CR>
+nmap <Leader>hsp :sp<CR>
 
 
 
@@ -148,14 +183,9 @@ nmap <C-L> <C-W><C-L>
 nmap <Leader>ev :tabedit $MYVIMRC<CR>
 nmap <Leader>ep :tabedit ~/.vim/plugins.vim<CR>
 nmap <Leader>es :e ~/.vim/snippets/
-nmap <Leader>tn :tn<CR>
-nmap <Leader>tp :tp<CR>
 
 "Return to old buffer
 nmap <BS> :bp<CR>
-
-"Find tags ctags
-nmap <Leader><Leader>t :tag<space>
 
 "Add simple hightlight removal.
 nmap <Leader><space> :nohlsearch<CR>
@@ -255,7 +285,7 @@ nmap <F3> :Autoformat<CR>
 
 
 "------------------LARAVEL-SPECIFIC-------"
-nmap <Leader>lr :e app/Http/routes.php<CR>
+nmap <Leader>lr :e app/routes/web.php<CR>
 nmap <Leader>lc :CtrlP<CR>app/Http/Controllers
 nmap <Leader>lm :CtrlP<CR>app/
 nmap <Leader>lv :e resources/views/<CR>
