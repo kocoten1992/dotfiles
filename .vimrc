@@ -1,3 +1,8 @@
+"-------------------GODMODE--------------"
+"Need research
+"autocmd FileType ruby nmap <buffer> <f5> :!ruby %<cr>
+
+
 set nocompatible              " be iMproved, required
 
 "------------------VUNDLE----------------"
