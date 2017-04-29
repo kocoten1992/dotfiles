@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/kocoten1992/.EVE'
-let g:netrw_dirhist_2='/home/kocoten1992/Code/tienganhlamienphi/encoder/helperscript'
-let g:netrw_dirhist_3='/home/kocoten1992/Code/tienganhlamienphi/encoder/main2.js'
-let g:netrw_dirhist_4='/home/kocoten1992/Code/tienganhlamienphi/encoder/lib'
-let g:netrw_dirhist_5='/home/kocoten1992/Code/tienganhlamienphi/encoder/vendor'
-let g:netrw_dirhist_6='/home/kocoten1992/Code/tienganhlamienphi/seeder/data'
