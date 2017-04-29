@@ -27,7 +27,7 @@ Plugin 'ervandew/supertab'
 Plugin 'stephpy/vim-php-cs-fixer'
 Plugin 'tobyS/vmustache'
 Plugin 'tobyS/pdv'
-Plugin 'SirVer/ultisnips'
+"Plugin 'SirVer/ultisnips'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'jwalton512/vim-blade'
@@ -38,6 +38,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/syntastic' 
 Plugin 'wavded/vim-stylus'
 Plugin 'rust-lang/rust.vim'
+Plugin 'mhartington/oceanic-next'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -46,8 +47,9 @@ filetype plugin indent on    " required
 
 
 
-colorscheme murphy
+colorscheme spring-night
 
+filetype plugin indent on
 silent !stty -ixon > /dev/null 2>/dev/null
 set backspace=indent,eol,start
 set background=dark
@@ -76,7 +78,7 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 
-set expandtab ts=2 sw=2 ai
+set expandtab ts=4 sw=4 ai
 
 "Set php-fixer default
 let g:set_php_fixer_level = "psr2"
@@ -280,20 +282,25 @@ nmap zp 'Pzz
 
 
 
+"--------------FILETYPE-SPECIFIC----------"
+au FileType javascript setlocal sw=2 sts=2 ts=2 et
+au FileType html setlocal sw=2 sts=2 ts=2 et
+au FileType css setlocal sw=2 sts=2 ts=2 et
+au FileType rs setlocal sw=2 sts=2 ts=2 et
+au FileType rust setlocal sw=2 sts=2 ts=2 et
+autocmd BufRead,BufNewFile *.blade.php set filetype=html
+
+
+
+
+
+
 "------------------LARAVEL-SPECIFIC-------"
 nmap <F3> :Autoformat<CR>
-"let g:autoformat_autoindent = 2
-"let g:autoformat_retab = 2 
-"let g:autoformat_remove_trailing_spaces = 2
-
-
-
-
-"------------------LARAVEL-SPECIFIC-------"
 nmap <Leader>lr :e app/routes/web.php<CR>
 nmap <Leader>lc :CtrlP<CR>app/Http/Controllers
 nmap <Leader>lm :CtrlP<CR>app/
-nmap <Leader>lv :e resources/views/<CR>
+nmap <Leader>lv :CtrlP<CR>resources/views/
 
 
 
