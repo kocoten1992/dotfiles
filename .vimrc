@@ -39,6 +39,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'wavded/vim-stylus'
 Plugin 'rust-lang/rust.vim'
 Plugin 'mhartington/oceanic-next'
+Plugin 'jason0x43/vim-js-indent'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
