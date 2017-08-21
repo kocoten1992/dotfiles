@@ -39,7 +39,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'wavded/vim-stylus'
 Plugin 'rust-lang/rust.vim'
 Plugin 'mhartington/oceanic-next'
-Plugin 'jason0x43/vim-js-indent'
+Plugin 'othree/html5.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -332,6 +332,7 @@ let g:ctrlp_custom_ignore = {
 "\
 let NERDTreeHijackNetrw = 0
 let NERDTreeQuitOnOpen=1
+map <leader>r :NERDTreeFind<cr>
 
 
 
