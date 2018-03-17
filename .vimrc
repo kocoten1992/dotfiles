@@ -27,10 +27,8 @@ Plugin 'ervandew/supertab'
 Plugin 'stephpy/vim-php-cs-fixer'
 Plugin 'tobyS/vmustache'
 Plugin 'tobyS/pdv'
-"Plugin 'SirVer/ultisnips'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'jwalton512/vim-blade'
 Plugin 'danro/rename.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'maksimr/vim-jsbeautify'
@@ -40,6 +38,9 @@ Plugin 'wavded/vim-stylus'
 Plugin 'rust-lang/rust.vim'
 Plugin 'mhartington/oceanic-next'
 Plugin 'othree/html5.vim'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -90,7 +91,8 @@ nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
 nnoremap <Leader>d :call pdv#DocumentWithSnip()<CR>
 
-
+"GitGutter gitgutter
+let g:gitgutter_enabled = 0
 
 
 "------------------VISUALS---------------"
@@ -151,9 +153,9 @@ nmap <Leader>ctn :tn<CR>
 nmap <Leader>ctp :tp<CR>
 nmap <Leader>cts :ts<CR>
 
-nmap <Leader>ctc :!ctags -R --exclude=.git --exclude=node_modules --exclude=vendor --exclude=bower_components --exclude=storage --exclude=.idea --exclude=jspm_packages<space><CR>
+nmap <Leader>ctc :!ctags -R --exclude=.git --exclude=node_modules --exclude=vendor --exclude=bower_components --exclude=storage --exclude=.idea --exclude=jspm_packages --exclude=.vscode<space><CR>
 
-
+nmap <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 
 
@@ -312,7 +314,7 @@ nmap <Leader>lv :CtrlP<CR>resources/views/
 "\
 let g:ctrlp_custom_ignore = 'node_modules\DS_Store\|git'
 let g:ctrlp_match_window = 'top,order:ttb,min:1,max:30,results:30'
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store,*/vendor,*/node_modules
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store,*/vendor,*/node_modules,*/.vscode/*
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
@@ -321,6 +323,7 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
+let g:ctrlp_show_hidden = 1
 
 
 
@@ -332,6 +335,7 @@ let g:ctrlp_custom_ignore = {
 "\
 let NERDTreeHijackNetrw = 0
 let NERDTreeQuitOnOpen=1
+let NERDTreeIgnore=['\.git$', '\.vscode$']
 map <leader>r :NERDTreeFind<cr>
 
 
@@ -351,6 +355,13 @@ let g:grep_cmd_opts = '--line-numbers --noheading'
 
 
 
+
+
+
+"/
+"------------------GITGUTTER------------------"
+"\
+nmap <Leader>gg :GitGutterToggle<CR>
 
 
 
@@ -391,6 +402,7 @@ autocmd FileType php noremap <Leader>nf :call PhpExpandClass()<CR>
 "Sort PHP use statements
 ""http://stackoverflow.com/questions/11531073/how-do-you-sort-a-range-of-lines-by-length
 vmap <Leader>su ! awk '{ print length(), $0 \| "sort -n \| cut -d\\  -f2-" }'<cr>
+vmap <Leader>sd ! awk '{ print length(), $0 \| "sort -r -n \| cut -d\\  -f2-" }'<cr>
 
 
 
