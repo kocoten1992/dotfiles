@@ -1,4 +1,4 @@
-local ret_status="%(?:%{$fg_bold[cyan]%}%M:%{$fg_bold[red]%}%M)"
+local ret_status="%(?:%{$fg_bold[magenta]%}%M:%{$fg_bold[red]%}%M)"
 PROMPT='${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
