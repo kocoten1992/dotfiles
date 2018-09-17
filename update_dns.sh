@@ -4,7 +4,7 @@
 
 USERNAME=username
 PASSWORD=password
-HOST=www.example.com
+HOSTS=(www1.example.com www2.example.com)
 
 CACHED_IP=$(cat current_ip)
 CURRENT_IP=$(curl ifconfig.io)
@@ -14,6 +14,9 @@ if [[ $CACHED_IP == $CURRENT_IP ]]; then
 	exit 0
 fi
 
-curl "https://$USERNAME:$PASSWORD@freedns.afraid.org/nic/update?hostname=$HOST&myip=$CURRENT_IP"
+for index in ${!HOSTS[*]}
+do
+	curl "https://$USERNAME:$PASSWORD@freedns.afraid.org/nic/update?hostname=${HOSTS[$INDEX]}&myip=$CURRENT_IP"
+done
 
 echo "$CURRENT_IP" > current_ip
