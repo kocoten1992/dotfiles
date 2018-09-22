@@ -41,6 +41,8 @@ Plugin 'othree/html5.vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
+Plugin 'martinda/Jenkinsfile-vim-syntax'
+Plugin 'vim-scripts/groovyindent-unix'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
