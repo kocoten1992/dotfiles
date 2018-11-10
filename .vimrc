@@ -43,6 +43,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'martinda/Jenkinsfile-vim-syntax'
 Plugin 'vim-scripts/groovyindent-unix'
+Plugin 'racer-rust/vim-racer'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -292,7 +293,6 @@ au FileType javascript setlocal sw=2 sts=2 ts=2 et
 au FileType html setlocal sw=2 sts=2 ts=2 et
 au FileType css setlocal sw=2 sts=2 ts=2 et
 au FileType rs setlocal sw=2 sts=2 ts=2 et
-au FileType rust setlocal sw=2 sts=2 ts=2 et
 autocmd BufRead,BufNewFile *.blade.php set filetype=html
 
 
@@ -306,6 +306,18 @@ nmap <Leader>lr :e app/routes/web.php<CR>
 nmap <Leader>lc :CtrlP<CR>app/Http/Controllers
 nmap <Leader>lm :CtrlP<CR>app/
 nmap <Leader>lv :CtrlP<CR>resources/views/
+
+
+
+
+"----------------RUST-RACER---------------"
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
+let g:racer_experimental_completer = 1
+let g:racer_cmd = "~/.cargo/bin/racer"
+let $RUST_SRC_PATH="~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
 
 
 
