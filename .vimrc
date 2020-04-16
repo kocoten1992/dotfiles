@@ -44,6 +44,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'martinda/Jenkinsfile-vim-syntax'
 Plugin 'vim-scripts/groovyindent-unix'
 Plugin 'racer-rust/vim-racer'
+Plugin 'vifm/vifm'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
