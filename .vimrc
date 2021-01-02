@@ -138,6 +138,15 @@ set incsearch
 
 
 
+"----------------CTRLVIM-----------------"
+let g:ctrlp_clear_cache_on_exit = 0
+
+
+
+
+
+
+
 
 "----------------TERMINAL----------------"
 nmap <Leader>ts :!
