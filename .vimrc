@@ -33,24 +33,23 @@ Plugin 'danro/rename.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'mattn/emmet-vim'
-Plugin 'scrooloose/syntastic' 
 Plugin 'wavded/vim-stylus'
 Plugin 'rust-lang/rust.vim'
 Plugin 'mhartington/oceanic-next'
 Plugin 'othree/html5.vim'
-Plugin 'sheerun/vim-polyglot'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'martinda/Jenkinsfile-vim-syntax'
 Plugin 'vim-scripts/groovyindent-unix'
-Plugin 'racer-rust/vim-racer'
 Plugin 'vifm/vifm'
+Plugin 'mg979/vim-visual-multi'
+Plugin 'ap/vim-css-color'
+Plugin 'vim-vdebug/vdebug'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 "------------------END-------------------"
-
 
 
 colorscheme spring-night
@@ -59,6 +58,7 @@ filetype plugin indent on
 silent !stty -ixon > /dev/null 2>/dev/null
 set backspace=indent,eol,start
 set background=dark
+set redrawtime=10000
 let g:ctrlp_max_files=0
 syntax on
 set switchbuf=useopen,usetab
@@ -98,6 +98,10 @@ nnoremap <Leader>d :call pdv#DocumentWithSnip()<CR>
 "GitGutter gitgutter
 let g:gitgutter_enabled = 0
 
+"Vdebug
+let g:vdebug_options = {}
+let g:vdebug_options["port"] = 9001
+let g:vdebug_features = { 'max_children': 128 }
 
 "------------------VISUALS---------------"
 set guifont=Fira_Code:h17
@@ -140,6 +144,7 @@ set incsearch
 
 "----------------CTRLVIM-----------------"
 let g:ctrlp_clear_cache_on_exit = 0
+
 
 
 
@@ -220,8 +225,8 @@ nmap ,1 :NERDTreeToggle<CR>
 nmap <C-e> :CtrlPMRUFiles<CR>
 
 "Tab switching
-nmap <C-n> :tabn<CR>
-nmap <C-m> :tabp<CR>
+nmap <C-l> :tabn<CR>
+nmap <C-h> :tabp<CR>
 
 "Tab moving
 nmap <C-F9> :tabm -1<CR>
@@ -240,10 +245,10 @@ nmap <C-o> :tabnew<CR>
 nmap <C-q> :q<CR>
 
 "Spit window switching
-nmap <C-h> <C-w><C-h>
-nmap <C-k> <C-w><C-k>
-nmap <C-j> <C-w><C-j>
-nmap <C-l> <C-w><C-l>
+"nmap <C-h> <C-w><C-h>
+"nmap <C-k> <C-w><C-k>
+"nmap <C-j> <C-w><C-j>
+"nmap <C-l> <C-w><C-l>
 
 "Format js
 map <Leader>js :call JsBeautify()<cr>
@@ -336,13 +341,11 @@ let $RUST_SRC_PATH="~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rus
 "/
 "------------------CtrlP------------------"
 "\
-let g:ctrlp_custom_ignore = 'node_modules\DS_Store\|git'
 let g:ctrlp_match_window = 'top,order:ttb,min:1,max:30,results:30'
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store,*/vendor,*/node_modules,*/.vscode/*
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store,*/vendor/*,*/node_modules/*,*/.vscode/*
 
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'dir':  '\v[\/]\.(git|hg|svn|node_modules|DS_Store|vendor)$',
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
@@ -397,25 +400,6 @@ nmap <Leader>gg :GitGutterToggle<CR>
 
 
 
-"Custom function here and there :P
-
-"Custom function vim-php-namespace
-function! IPhpInsertUse()
-    call PhpInsertUse()
-    call feedkeys('a',  'n')
-endfunction
-autocmd FileType php inoremap <Leader>n <Esc>:call IPhpInsertUse()<CR>
-autocmd FileType php noremap <Leader>n :call PhpInsertUse()<CR>
-
-
-function! IPhpExpandClass()
-    call PhpExpandClass()
-    call feedkeys('a', 'n')
-endfunction
-autocmd FileType php inoremap <Leader>nf <Esc>:call IPhpExpandClass()<CR>
-autocmd FileType php noremap <Leader>nf :call PhpExpandClass()<CR>
-
-
 
 
 
@@ -427,7 +411,6 @@ autocmd FileType php noremap <Leader>nf :call PhpExpandClass()<CR>
 ""http://stackoverflow.com/questions/11531073/how-do-you-sort-a-range-of-lines-by-length
 vmap <Leader>su ! awk '{ print length(), $0 \| "sort -n \| cut -d\\  -f2-" }'<cr>
 vmap <Leader>sd ! awk '{ print length(), $0 \| "sort -r -n \| cut -d\\  -f2-" }'<cr>
-
 
 
 
