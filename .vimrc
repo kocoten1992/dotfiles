@@ -1,13 +1,6 @@
-"-------------------GODMODE--------------"
-"Need research
-"autocmd FileType ruby nmap <buffer> <f5> :!ruby %<cr>
-
-
-set nocompatible              " be iMproved, required
+colorscheme spring-night
 
 "------------------VUNDLE----------------"
-filetype off                  " required
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -47,14 +40,10 @@ Plugin 'ap/vim-css-color'
 Plugin 'vim-vdebug/vdebug'
 
 call vundle#end()            " required
-filetype plugin indent on    " required
 
 "------------------END-------------------"
 
 
-colorscheme spring-night
-
-filetype plugin indent on
 silent !stty -ixon > /dev/null 2>/dev/null
 set backspace=indent,eol,start
 set background=dark
@@ -101,21 +90,18 @@ let g:gitgutter_enabled = 0
 "Vdebug
 let g:vdebug_options = {}
 let g:vdebug_options["port"] = 9001
-let g:vdebug_features = { 'max_children': 128 }
+let g:vdebug_features = { 'max_children': 256 }
 
 "------------------VISUALS---------------"
 set guifont=Fira_Code:h17
 set guioptions-=e
 set linespace=15
-set term=xterm-256color
 
 set guioptions-=l
 set guioptions-=L
 set guioptions-=r
 set guioptions-=R
 
-
-set foldcolumn=2
 
 hi Normal ctermfg=none ctermbg=none
 hi FoldColumn ctermbg=none ctermfg=none
