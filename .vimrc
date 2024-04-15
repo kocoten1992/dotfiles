@@ -43,6 +43,9 @@ call vundle#end()            " required
 
 "------------------END-------------------"
 
+set nocompatible
+filetype off
+filetype plugin indent on
 
 silent !stty -ixon > /dev/null 2>/dev/null
 set backspace=indent,eol,start
