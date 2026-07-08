@@ -1,4 +1,6 @@
-colorscheme spring-night
+if !empty(globpath(&runtimepath, 'colors/spring-night.vim'))
+  colorscheme spring-night
+endif
 
 "------------------VUNDLE----------------"
 " set the runtime path to include Vundle and initialize
